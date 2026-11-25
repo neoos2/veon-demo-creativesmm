@@ -1,0 +1,77 @@
+/* Hallmark · shape: full-bleed photo hero + rows-not-cards program list · genre: modern-minimal · theme: custom · job: book+hire · idea: "Сторінка говорить мовою роликів Марти: живий денний кадр і субтитр-плашка у фірмовому кольорі; кожен розділ — один кадр із фактом, ціною і дією «Зателефонувати»" · vibe: "warm daylight, subtitle plates, prices first"
+ * paper: #FFFFFF · accent: #6245FE · display: Fixel Display · body: Fixel Text · hero: full-width daylight photo of Marta, H1 on violet subtitle plates bottom-left, pink lower third with her name, green call button · nav: white opaque sticky bar, 5 anchors, phone as text, green button; burger + bottom call bar on phones · footer: light #F2F0FF, 4 columns, legal name, phone, address, socials, no giant logo · imagery: client photos · signature: headings on solid plates that wrap the line like video subtitles; prices on pink plates read first
+ * axes: light/grotesk-heavy/chromatic-violet · posture: committed · surface: absolute · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: E (motion), kept to 5 purposeful effects from concept.md, all off under reduced motion */
+/* Hallmark · waive 7b · stamp declares surface: absolute; --color-bg and --color-accent-ink are #FFFFFF · concept.md picks pure white paper so the warm client photos (wood, plants, red jacket) carry the colour and subtitle plates stay crisp */
+/* Hallmark · waive 23 · posture: committed is declared in the stamp · the violet subtitle plates under the headline are the signature idea taken from the video covers; violet is the voice of the page and the business section */
+/* Hallmark · waive 72 · plate padding is .06em .28em from concept.md, box-decoration-break: clone · display plates copy the tight subtitle bar of the video covers; wider padding turns the signature into generic pills */
+/* Hallmark · answered F4 · only the green call button is a filled primary; the white ghost and light buttons are secondary and need a solid fill to stay legible over the hero photo and the violet business section */
+/* Hallmark · answered F19 · concept.md fixes the type system: Fixel Display 600/800 for plates and rows, Fixel Text 400/500/600 for text; 500 carries meta lines and lead, kept as approved */
+/* Line 1 of this file is the Hallmark stamp (docs/process/hallmark.md): filled from design/concept.md. */
+/* Client design tokens from design/concept.md (veon-concept: colors, fonts). */
+@font-face { font-family: "Fixel Display"; src: url("/fonts/FixelDisplay-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fixel Display"; src: url("/fonts/FixelDisplay-ExtraBold.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fixel Text"; src: url("/fonts/FixelText-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fixel Text"; src: url("/fonts/FixelText-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Fixel Text"; src: url("/fonts/FixelText-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+/* Metric fallbacks keep layout shift low while Fixel loads. */
+@font-face { font-family: "Fixel Display Fallback"; src: local("Arial"), local("Helvetica"), local("Liberation Sans"); size-adjust: 104%; ascent-override: 92%; descent-override: 24%; }
+@font-face { font-family: "Fixel Text Fallback"; src: local("Arial"), local("Helvetica"), local("Liberation Sans"); size-adjust: 102%; ascent-override: 94%; descent-override: 25%; }
+
+:root {
+  /* colors (concept.md: Дизайн-система для FULL) */
+  --color-bg: #FFFFFF;
+  --color-surface: #F2F0FF;
+  --color-text: #17132B;
+  --color-muted: #5B5670;
+  --color-accent: #6245FE;
+  --color-accent-hover: #5034E0;
+  --color-accent-ink: #FFFFFF;
+  --color-price: #FF7CB0;
+  --color-action: #19FF91;
+
+  --font-display: "Fixel Display", "Fixel Display Fallback", system-ui, sans-serif;
+  --font-body: "Fixel Text", "Fixel Text Fallback", system-ui, sans-serif;
+
+  /* type scale: desktop / 390 */
+  --fs-h1: clamp(2rem, 0.9rem + 4.6vw, 5rem);
+  --fs-h2: clamp(1.875rem, 1.45rem + 1.85vw, 3rem);
+  --fs-row: clamp(1.375rem, 1.15rem + 0.95vw, 2rem);
+  --fs-price: clamp(1.5rem, 1.2rem + 1.3vw, 2.5rem);
+  --fs-phone: clamp(1.75rem, 0.95rem + 4vw, 4.5rem);
+  --fs-lead: clamp(1.125rem, 1.03rem + 0.4vw, 1.375rem);
+  --fs-body: clamp(1.0625rem, 1.04rem + 0.1vw, 1.125rem);
+  --fs-meta: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+
+  /* rhythm 4/8 */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-5: 3rem;
+  --s-6: 4rem;
+  --s-7: 6rem;
+  --s-8: 8rem;
+  --section-y: clamp(4.5rem, 3rem + 6vw, 8rem);
+
+  --radius: 10px;
+  --plate-radius: .18em;
+  --header-h: 60px;
+  --bar-h: 56px;
+  --tap: 44px;
+
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --dur: 450ms;
+  --space: 20px;
+  --gutter: 16px;
+  --container: 1280px;
+}
+@media (min-width: 768px) {
+  :root { --space: 40px; --gutter: 24px; }
+}
+@media (min-width: 1024px) {
+  :root { --header-h: 72px; }
+}
+@media (min-width: 1440px) {
+  :root { --space: 80px; }
+}

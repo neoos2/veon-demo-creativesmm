@@ -1,0 +1,6 @@
+---
+// Signature element: a solid subtitle plate that wraps the line (box-decoration-break: clone).
+interface Props { tone?: "violet" | "white" | "pink"; class?: string; }
+const { tone = "violet", class: cls } = Astro.props;
+---
+<span class:list={["plate", `plate--${tone}`, cls]}><slot /></span>
